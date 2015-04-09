@@ -1,16 +1,15 @@
+<center>
 
-  <center>
+  <% if @game.winner == "Draw" %>
+    <h1>Draw!</h1>
+  <% elsif @game.winner.name == "computer" %>
+    <h1>You Lost! Computer Wins.</h1>
+  <% else %>
+    <h1>Congrats <%= @game.winner.choice %>, You Won!</h1>
+  <%end%>
 
-    <% if @game.winner == "Draw" %>
-      <h1>Draw!</h1>
-    <% elsif @game.winner.name == "computer" %>
-      <h1>You Lost! Computer Wins.</h1>
-    <% else %>
-      <h1>Wielding <%= @game.winner.choice %>, You Won!</h1>
-    <%end%>
+  <form action='/game' method='post'>
+    <button>Play again!</button>
+  </form>
 
-    <form action='/game' method='post'>
-      <button>Play again!</button>
-    </form>
-
-  </center>
+</center>

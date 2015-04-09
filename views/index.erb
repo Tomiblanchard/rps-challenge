@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html>
+<center>
 
-  <head>
-    <title>Rock Paper Scissors!</title>
-  </head>
+    <h2>Rock Paper Scissors!</h2>
+    <br>
+    <form action="/game" method="post">
+      <question>Enter your name to start:</question>
+      <input type="text" name="name">
+      <input type="submit" value="Start Game!">
+    </form>
+    <br>
 
-<body>
+  <% @name %>
 
-  <center>
-
-      <h2>Rock Paper Scissors!</h2>
-      <br>
-      <form action="/game" method="post">
-        <question>Enter your name to start:</question>
-        <input type="text" name="name">
-        <input type="submit" value="Start Game!">
-      </form>
-      <br>
-
-    <% @name %>
-
-  </center>
-
-  </body>
-
-</html>
+</center>
