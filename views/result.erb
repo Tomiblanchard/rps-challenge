@@ -1,0 +1,24 @@
+<h1>
+  You <%= @result %>
+</h1>
+
+<h2>
+  You chose <%= @player_one %> and your opponent chose <%= @player_two %>
+</h2>
+
+<div class="left"> <%= session[:name] %> </div>
+
+<div class="right"> Computer </div>
+
+<p>
+  <form action="/result" method="post">
+    Make your choice <br>
+    <button type="submit" name="Choice" value="rock" />Rock</button>
+    <button type="submit" name="Choice" value="paper" />Paper</button>
+    <button type="submit" name="Choice" value="scissors" />Scissors</button>
+  </form>
+</p>
+
+<h2>
+  <a href="/">Homepage</a>
+</h2>

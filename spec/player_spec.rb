@@ -1,22 +1,22 @@
 require 'player'
 
 describe Player do
-  let(:player) { described_class.new 'Tomi' }
+  let(:player1) { Player.new ('Tomi') }
+  let(:player2) { Player.new ('Computer') }
 
-  context 'when created' do
+  context 'when initialized' do
 
-    it 'has a name' do
-      expect(player.name).to eq 'Tomi'
+    it 'can have a name' do
+      expect(player1.name).to eq 'Tomi'
+      expect(player2.name).to eq 'Computer'
     end
-
   end
 
-  context 'after been created' do
+  context 'defined as computer' do
 
-    it 'can choose a move' do
-      player.choice(:rock)
-      expect(player.move). to eq :rock
+    it 'can make a random choice' do
+      expect(Player::GAME_OPTIONS).to receive(:sample).and_return("Rock")
+      expect(player2.choice).to eq("Rock")
     end
-
   end
 end

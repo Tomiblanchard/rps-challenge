@@ -1,9 +1,12 @@
 require 'sinatra/base'
+require './lib/player'
+require './lib/game'
 Dir[File.dirname(__FILE__) + '../lib/*.rb'].each {|file| require file}
 
 class RPS < Sinatra::Base
 
   enable :sessions
+  GAME = Game.new
   set :views, Proc.new { File.join(root, "..", "views")}
 
   get '/' do
@@ -15,13 +18,21 @@ class RPS < Sinatra::Base
   end
 
   post '/game' do
-    @player = Player.new(params[:name])
-    @cpu = Player.new('Cpu')
-    @player.choice = params[:choice]
-    cpu.cpu_choice
-    @game = Game.new(player, cpu)
-    @result = game.winning
-    erb :game
+    if params[:choice]
+      player_one = Player.new(params[:name])
+      player_two = Player.new("Computer")
+      @player_one = params[:choice]
+      @player_two = player_two.choice
+      @result = GAME.outcome @player_one, @player_two
+      erb(:result)
+    else
+      session[:name] = params[:name] if params[:name]
+      erb :game
+    end
+  end
+
+  get '/result' do
+    redirect '/'
   end
 
   post '/result' do

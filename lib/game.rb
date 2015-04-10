@@ -1,21 +1,20 @@
 class Game
 
-  def initialize(player, cpu)
-    @player = player
-    @cpu = cpu
+  attr_reader :player1, :player2
+
+  def initialize player1 = nil, player2 = nil
+    @player1 = player1
+    @player2 = player2
+    @beats = {"Scissors" => "Rock", "Paper" => "Scissors", "Rock" => "Paper"}
   end
 
-  def winner?(choice, cpu_choice)
-    if player.choice == cpu.cpu_choice
-      "It's a draw!"
-    elsif player.choice == "scissors" && cpu.cpu_choice == "paper"
-      "You have won!"
-    elsif player.choice == "paper" && cpu.cpu_choice == "rock"
-      "You have won!"
-    elsif player.choice == "rock" && cpu.cpu_choice == "scissors"
-      "You have won!"
+  def outcome(player1, player2)
+    if player1 == player2
+      "tie"
+    elsif @beats[player2].include?(player1)
+      "win"
     else
-      "You lost!"
+      "lose"
     end
   end
 end

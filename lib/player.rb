@@ -1,17 +1,12 @@
 class Player
-  attr_reader :name, :move
-  attr_writer :cpu_choice
-  attr_accessor :choice
+  attr_reader :name, :choice
+  GAME_OPTIONS = %w(rock paper scissors)
 
   def initialize name
     @name = name
   end
 
-  def choice(move)
-    @move = move.to_sym
-  end
-
-  def cpu_choice
-    @cpu_choice = %w(rock paper scissors).sample
+  def choice
+    @choice = GAME_OPTIONS.sample
   end
 end

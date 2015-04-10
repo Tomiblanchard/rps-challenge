@@ -1,35 +1,27 @@
-Given(/^I am on the Game page$/) do
-  visit('/game')
+Given(/^I am on the game page$/) do
+  visit '/game'
 end
 
-When(/^I choose a weapon$/) do
-  choose('rock')
+Then(/^I should be on the Game page$/) do |game|
+  expect(current_path).to eq game
 end
 
-Then(/^I should see the results page$/) do
-  visit('/outcome')
+When(/^I press Rock$/) do |rock|
+  click_button('rock')
 end
 
-Given(/^I click "([^"]*)"$/) do |arg1|
-  click_button arg1
+When(/^I click "([^"]*)"$/) do |rock|
+  click_button('rock')
 end
 
-Then(/^I should be on the "([^"]*)" page$/) do |arg1|
-  expect(current_path).to eq arg1
+Then(/^I should be on the Result page$/) do |result|
+  expect(current_path).to eq result
 end
 
-Given(/^I fill in "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
-  fill_in arg1, with: arg2
+Given(/^I am on the result page$/) do
+  visit '/result'
 end
 
 Then(/^I should see "([^"]*)"$/) do |arg1|
   expect(page).to have_content arg1
-end
-
-Then(/^the page should have "([^"]*)" button$/) do |arg1|
-  expect(page).to have_button arg1
-end
-
-Given(/^I follow link "([^"]*)"$/) do |arg1|
-  click_link arg1
 end
